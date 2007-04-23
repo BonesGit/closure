@@ -1,5 +1,6 @@
 Still some things to do
 =======================
+- Add confirmation dialog when logout, reboot, or shutdown is clicked 
 - Internationalize text
 - Add font settings to closure-preferences
 - Narrow down dependency versions closer to what they really are
