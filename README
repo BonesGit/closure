@@ -1,0 +1,76 @@
+Closure
+=======
+
+Closure is a shutdown utility for a composite X windowing environment.
+
+Project site: http://code.google.com/p/closure/
+
+
+Dependencies
+============
+These are the versions I have installed, although Closure will most likey work
+with versions less then these. I'll try to update this list with the actual
+versions shortly.
+	>= pygtk-2.10 (most likely works with 2.8, haven't tested)
+	>= pycairo-1.2
+	>= librsvg-2.16
+	>= gnome-python-2.16
+	>= gnome-python-desktop-2.16
+	>= libglade-2.6
+	>= gconf-2.14
+
+	Second level dependencies
+	-------------------------
+	>= glib-2.12
+	>= gtk+-2.10  (most likely works with 2.8, haven't tested)
+	>= cairo-1.2 (with SVG support, and optional GLITZ support)
+	>= pango-1.14
+	>= libgnome-2.16
+	>= gnome-desktop-2.16
+
+
+License
+=======
+  Copyright (C) 2007 Anthony Arobone <aarobone@gmail.com>
+
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301  USA.
+
+Installation
+============
+./autogen.sh
+[./configure --help] (to get/set optional configure settings)
+make
+make install (as root)
+
+	Installation Notes:
+	------------------
+	1) Even though the configure script prints out the following:
+
+	   Using $(sysconfdir)/gconf/schemas as install directory for schema files
+
+	   The path used is always /etc/gconf/schemas. I'm not sure how to change 
+	   this printout message yet ;)
+
+
+Troubleshooting
+===============
+
+1) If you are getting any GConf errors when attempting to run Closure, please
+double check that the gconf closure schema was installed successfully. You
+can use gcond-editor to check this. If the schema needs to be installed
+execute the following command from the root closure dir:
+	gconftool-2 --install-schema-file=src/closure.schemas
+
+

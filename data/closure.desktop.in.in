@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Closure
+Comment=Composite Graphical Shutdown Utility
+Exec=closure
+Terminal=false
+Type=Application
+Icon=@PKGDATADIR@/closure.svg
+Categories=Application;

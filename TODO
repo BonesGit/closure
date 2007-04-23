@@ -1,0 +1,7 @@
+Still some things to do
+=======================
+- Internationalize text
+- Add font settings to closure-preferences
+- Narrow down dependency versions closer to what they really are
+- Create a more flexible background compositing engine to handle multiple types
+

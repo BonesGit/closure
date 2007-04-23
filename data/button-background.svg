@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="56"
+   height="56"
+   id="svg1831"
+   sodipodi:version="0.32"
+   inkscape:version="0.45"
+   version="1.0"
+   sodipodi:docbase="/home/anthony/projects/closure/src/svg"
+   sodipodi:docname="glow.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   sodipodi:modified="true">
+  <defs
+     id="defs1833">
+    <linearGradient
+       id="linearGradient2724">
+      <stop
+         style="stop-color:#e4e4e4;stop-opacity:1;"
+         offset="0"
+         id="stop2726" />
+      <stop
+         style="stop-color:#f0f0f0;stop-opacity:1;"
+         offset="1"
+         id="stop2728" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient2724"
+       id="linearGradient2730"
+       x1="24.75"
+       y1="47"
+       x2="24.75"
+       y2="3"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.916667,0,0,0.916667,3.5104153,3.5104159)" />
+    <filter
+       inkscape:collect="always"
+       id="filter14232">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="1.8301247"
+         id="feGaussianBlur14234" />
+    </filter>
+    <mask
+       maskUnits="userSpaceOnUse"
+       id="mask14241">
+      <rect
+         transform="matrix(0.8133909,0,0,0.8133909,4.4786184,4.4786184)"
+         rx="8.2985935"
+         ry="8.2985935"
+         y="-0.11458397"
+         x="-0.11458397"
+         height="48.229168"
+         width="48.229168"
+         id="rect14243"
+         style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.77083337;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline;filter:url(#filter14232)" />
+    </mask>
+    <filter
+       inkscape:collect="always"
+       x="-0.10775201"
+       width="1.215504"
+       y="-0.10824856"
+       height="1.2164971"
+       id="filter3917">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="2.9362422"
+         id="feGaussianBlur3919" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#000000"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="4"
+     inkscape:cx="56"
+     inkscape:cy="26.421875"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer4"
+     inkscape:showpageshadow="false"
+     inkscape:window-width="1034"
+     inkscape:window-height="791"
+     inkscape:window-x="4"
+     inkscape:window-y="22"
+     borderlayer="false"
+     width="56px"
+     height="56px" />
+  <metadata
+     id="metadata1836">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>Button Background</dc:title>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Anthony Arobone</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/by-sa/2.0/" />
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/by-sa/2.0/">
+        <cc:permits
+           rdf:resource="http://web.resource.org/cc/Reproduction" />
+        <cc:permits
+           rdf:resource="http://web.resource.org/cc/Distribution" />
+        <cc:requires
+           rdf:resource="http://web.resource.org/cc/Notice" />
+        <cc:requires
+           rdf:resource="http://web.resource.org/cc/Attribution" />
+        <cc:permits
+           rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+        <cc:requires
+           rdf:resource="http://web.resource.org/cc/ShareAlike" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Glow"
+     style="display:none"
+     transform="translate(2.4895835,2.4895835)"
+     sodipodi:insensitive="true">
+    <rect
+       style="opacity:1;fill:#0078ff;fill-opacity:1;stroke:none;stroke-width:1.77083337;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline"
+       id="rect12703"
+       width="48.229168"
+       height="48.229168"
+       x="-0.11458397"
+       y="-0.11458397"
+       ry="5.8133373"
+       rx="5.8133373"
+       mask="url(#mask14241)"
+       transform="matrix(1.1611231,0,0,1.1611231,-2.3565379,-2.3565379)" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer4"
+     inkscape:label="glow_path"
+     style="display:inline">
+    <rect
+       style="opacity:1;fill:#007eff;fill-opacity:0.76444447;stroke:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter3917)"
+       id="rect2630"
+       width="54.5"
+       height="54.25"
+       x="1"
+       y="1.25"
+       rx="7.6640615"
+       ry="7.6289077"
+       transform="matrix(0.8807339,0,0,0.8847926,3.1192673,2.89401)" />
+  </g>
+  <g
+     inkscape:label="Border"
+     inkscape:groupmode="layer"
+     id="layer1"
+     style="display:inline"
+     transform="translate(2.4895835,2.4895835)"
+     sodipodi:insensitive="true">
+    <rect
+       style="opacity:1;fill:url(#linearGradient2730);fill-opacity:1;stroke:#ffffff;stroke-width:1.83333337;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect1841"
+       width="42.166668"
+       height="42.166668"
+       x="4.4270825"
+       y="4.4270825"
+       ry="6.75"
+       rx="6.75" />
+  </g>
+</svg>

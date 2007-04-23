@@ -1,0 +1,8 @@
+prefix=@PREFIX@
+exec_prefix=${prefix}
+includedir=${prefix}/include
+datadir=${prefix}/share
+
+Name: Closure
+Description: Composite X shutdown utility
+Version: 0.1

@@ -1,0 +1,312 @@
+<gconfschemafile>
+<schemalist>
+	<schema>
+		<key>/schemas/apps/closure/general/fullscreen</key>
+		<applyto>/apps/closure/general/fullscreen</applyto>
+		<owner>closure</owner>
+		<type>bool</type>
+		<default>0</default>
+		<locale name="C">
+			<short>Fullscreen</short>
+			<long>Toggles fullscreen mode.</long>
+		 </locale>
+	</schema>
+	<schema>
+		<key>/schemas/apps/closure/background/style</key>
+		<applyto>/apps/closure/background/style</applyto>
+		<owner>closure</owner>
+		<type>string</type>
+		<default>linear</default>
+		<locale name="C">
+			<short>Background style</short>
+			<long>Toggles the type of background style: solid, linear, svg.</long>
+		 </locale>
+	</schema>
+	<schema>
+		<key>/schemas/apps/closure/background/solid</key>
+		<applyto>/apps/closure/background/solid</applyto>
+		<owner>closure</owner>
+		<type>string</type>
+		<default>000000AA</default>
+		<locale name="C">
+			<short>Solid background</short>
+			<long>The solid background color and alpha value in hex RRGGBBAA format.</long>
+		 </locale>
+	</schema>
+	<schema>
+		<key>/schemas/apps/closure/background/linear_step_1</key>
+		<applyto>/apps/closure/background/linear_step_1</applyto>
+		<owner>closure</owner>
+		<type>string</type>
+		<default>000000E6</default>
+		<locale name="C">
+			<short>Linear gradient step 1</short>
+			<long>Linear gradient step 1 color and alpha value in hex RRGGBBAA format.</long>
+		 </locale>
+	</schema>
+	<schema>
+		<key>/schemas/apps/closure/background/linear_step_2</key>
+		<applyto>/apps/closure/background/linear_step_2</applyto>
+		<owner>closure</owner>
+		<type>string</type>
+		<default>000000BF</default>
+		<locale name="C">
+			<short>Linear gradient step 2</short>
+			<long>Linear gradient step 2 color and alpha value in hex RRGGBBAA format.</long>
+		 </locale>
+	</schema>
+	<schema>
+		<key>/schemas/apps/closure/background/linear_step_3</key>
+		<applyto>/apps/closure/background/linear_step_3</applyto>
+		<owner>closure</owner>
+		<type>string</type>
+		<default>00000080</default>
+		<locale name="C">
+			<short>Linear gradient step 3</short>
+			<long>Linear gradient step 3 color and alpha value in hex RRGGBBAA format.</long>
+		 </locale>
+	</schema>
+	<schema>
+		<key>/schemas/apps/closure/background/svg</key>
+		<applyto>/apps/closure/background/svg</applyto>
+		<owner>closure</owner>
+		<type>string</type>
+		<default></default>
+		<locale name="C">
+			<short>SVG image</short>
+			<long>The full path to the SVG image to use as the background.</long>
+		 </locale>
+	</schema>
+	<schema>
+		<key>/schemas/apps/closure/buttons/bg_svg</key>
+		<applyto>/apps/closure/buttons/bg_svg</applyto>
+		<owner>closure</owner>
+		<type>string</type>
+		<default>@PREFIX@/share/closure/button-background.svg</default>
+		<locale name="C">
+			<short>SVG Image</short>
+			<long>The full path to the SVG image to use as the button mouse over background.</long>
+		 </locale>
+	</schema>
+	<schema>
+		<key>/schemas/apps/closure/buttons/cancel_enabled</key>
+		<applyto>/apps/closure/buttons/cancel_enabled</applyto>
+		<owner>closure</owner>
+		<type>bool</type>
+		<default>1</default>
+		<locale name="C">
+			<short>Enable/Disable the button</short>
+			<long>Enable/Disable the use of this button</long>
+		 </locale>
+	</schema>
+	<schema>
+		<key>/schemas/apps/closure/buttons/cancel_label</key>
+		<applyto>/apps/closure/buttons/cancel_label</applyto>
+		<owner>closure</owner>
+		<type>string</type>
+		<default></default>
+		<locale name="C">
+			<short>Text label</short>
+			<long>The onscreen text to associated with this button.</long>
+		 </locale>
+	</schema>
+	<schema>
+		<key>/schemas/apps/closure/buttons/cancel_svg</key>
+		<applyto>/apps/closure/buttons/cancel_svg</applyto>
+		<owner>closure</owner>
+		<type>string</type>
+		<default>@PREFIX@/share/closure/emblem-unreadable.svg</default>
+		<locale name="C">
+			<short>SVG Image</short>
+			<long>The full path to the SVG image to use as the button foreground.</long>
+		 </locale>
+	</schema>
+	<schema>
+		<key>/schemas/apps/closure/buttons/lock_enabled</key>
+		<applyto>/apps/closure/buttons/lock_enabled</applyto>
+		<owner>closure</owner>
+		<type>bool</type>
+		<default>1</default>
+		<locale name="C">
+			<short>Enable/Disable the button</short>
+			<long>Enable/Disable the use of this button</long>
+		 </locale>
+	</schema>
+	<schema>
+		<key>/schemas/apps/closure/buttons/lock_label</key>
+		<applyto>/apps/closure/buttons/lock_label</applyto>
+		<owner>closure</owner>
+		<type>string</type>
+		<default>Lock</default>
+		<locale name="C">
+			<short>Text label</short>
+			<long>The onscreen text to associated with this button.</long>
+		 </locale>
+	</schema>
+	<schema>
+		<key>/schemas/apps/closure/buttons/lock_svg</key>
+		<applyto>/apps/closure/buttons/lock_svg</applyto>
+		<owner>closure</owner>
+		<type>string</type>
+		<default>@PREFIX@/share/closure/system-lock-screen.svg</default>
+		<locale name="C">
+			<short>SVG Image</short>
+			<long>The full path to the SVG image to use as the button foreground.</long>
+		 </locale>
+	</schema>
+	<schema>
+		<key>/schemas/apps/closure/buttons/logout_enabled</key>
+		<applyto>/apps/closure/buttons/logout_enabled</applyto>
+		<owner>closure</owner>
+		<type>bool</type>
+		<default>0</default>
+		<locale name="C">
+			<short>Enable/Disable the button</short>
+			<long>Enable/Disable the use of this button</long>
+		 </locale>
+	</schema>
+	<schema>
+		<key>/schemas/apps/closure/buttons/logout_label</key>
+		<applyto>/apps/closure/buttons/logout_label</applyto>
+		<owner>closure</owner>
+		<type>string</type>
+		<default>Logout</default>
+		<locale name="C">
+			<short>Text label</short>
+			<long>The onscreen text to associated with this button.</long>
+		 </locale>
+	</schema>
+	<schema>
+		<key>/schemas/apps/closure/buttons/logout_svg</key>
+		<applyto>/apps/closure/buttons/logout_svg</applyto>
+		<owner>closure</owner>
+		<type>string</type>
+		<default>@PREFIX@/share/closure/system-log-out.svg</default>
+		<locale name="C">
+			<short>SVG Image</short>
+			<long>The full path to the SVG image to use as the button foreground.</long>
+		 </locale>
+	</schema>
+	<schema>
+		<key>/schemas/apps/closure/buttons/reboot_enabled</key>
+		<applyto>/apps/closure/buttons/reboot_enabled</applyto>
+		<owner>closure</owner>
+		<type>bool</type>
+		<default>1</default>
+		<locale name="C">
+			<short>Enable/Disable the button</short>
+			<long>Enable/Disable the use of this button</long>
+		 </locale>
+	</schema>
+	<schema>
+		<key>/schemas/apps/closure/buttons/reboot_label</key>
+		<applyto>/apps/closure/buttons/reboot_label</applyto>
+		<owner>closure</owner>
+		<type>string</type>
+		<default>Reboot</default>
+		<locale name="C">
+			<short>Text label</short>
+			<long>The onscreen text to associated with this button.</long>
+		 </locale>
+	</schema>
+	<schema>
+		<key>/schemas/apps/closure/buttons/reboot_svg</key>
+		<applyto>/apps/closure/buttons/reboot_svg</applyto>
+		<owner>closure</owner>
+		<type>string</type>
+		<default>@PREFIX@/share/closure/computer-reboot.svg</default>
+		<locale name="C">
+			<short>SVG Image</short>
+			<long>The full path to the SVG image to use as the button foreground.</long>
+		 </locale>
+	</schema>
+	<schema>
+		<key>/schemas/apps/closure/buttons/shutdown_enabled</key>
+		<applyto>/apps/closure/buttons/shutdown_enabled</applyto>
+		<owner>closure</owner>
+		<type>bool</type>
+		<default>1</default>
+		<locale name="C">
+			<short>Enable/Disable the button</short>
+			<long>Enable/Disable the use of this button</long>
+		 </locale>
+	</schema>
+	<schema>
+		<key>/schemas/apps/closure/buttons/shutdown_label</key>
+		<applyto>/apps/closure/buttons/shutdown_label</applyto>
+		<owner>closure</owner>
+		<type>string</type>
+		<default>Shutdown</default>
+		<locale name="C">
+			<short>Text label</short>
+			<long>The onscreen text to associated with this button.</long>
+		 </locale>
+	</schema>
+	<schema>
+		<key>/schemas/apps/closure/buttons/shutdown_svg</key>
+		<applyto>/apps/closure/buttons/shutdown_svg</applyto>
+		<owner>closure</owner>
+		<type>string</type>
+		<default>@PREFIX@/share/closure/computer.svg</default>
+		<locale name="C">
+			<short>SVG Image</short>
+			<long>The full path to the SVG image to use as the button foreground.</long>
+		 </locale>
+	</schema>
+	<schema>
+		<key>/schemas/apps/closure/buttons/scale</key>
+		<applyto>/apps/closure/buttons/scale</applyto>
+		<owner>closure</owner>
+		<type>float</type>
+		<default>2.0</default>
+		<locale name="C">
+			<short>Scale SVG buttons</short>
+			<long>Amount to scale the SVG buttons by: min = 1, max = 5</long>
+		 </locale>
+	</schema>
+	<schema>
+		<key>/schemas/apps/closure/commands/lock</key>
+		<applyto>/apps/closure/commands/lock</applyto>
+		<owner>closure</owner>
+		<type>string</type>
+		<default>xlock</default>
+		<locale name="C">
+			<short>Command to lock the screen</short>
+			<long>The command to lock the screen.</long>
+		 </locale>
+	</schema>
+	<schema>
+		<key>/schemas/apps/closure/commands/logout</key>
+		<applyto>/apps/closure/commands/logout</applyto>
+		<owner>closure</owner>
+		<type>string</type>
+		<default></default>
+		<locale name="C">
+			<short>Command to logout</short>
+			<long>The command to logout of the desktop.</long>
+		 </locale>
+	</schema>
+	<schema>
+		<key>/schemas/apps/closure/commands/reboot</key>
+		<applyto>/apps/closure/commands/reboot</applyto>
+		<owner>closure</owner>
+		<type>string</type>
+		<default>sudo reboot</default>
+		<locale name="C">
+			<short>Command to reboot the computer</short>
+			<long>The command to reboot the computer.</long>
+		 </locale>
+	</schema>
+	<schema>
+		<key>/schemas/apps/closure/commands/shutdown</key>
+		<applyto>/apps/closure/commands/shutdown</applyto>
+		<owner>closure</owner>
+		<type>string</type>
+		<default>sudo halt</default>
+		<locale name="C">
+			<short>Command to shutdown the computer</short>
+			<long>The command to shutdown the computer.</long>
+		 </locale>
+	</schema>
+</schemalist>
+</gconfschemafile>
