@@ -15,7 +15,7 @@ versions shortly.
 	>= pycairo-1.2
 	>= librsvg-2.16
 	>= gnome-python-2.16
-	>= gnome-python-desktop-2.16
+	>= gnome-python-desktop-2.16 (with rsvg support)
 	>= libglade-2.6
 	>= gconf-2.14
 
