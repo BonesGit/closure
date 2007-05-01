@@ -168,11 +168,14 @@ class Closure:
 		self.box.set_spacing( 0 )
 		expand = False
 		fill = False
-		self.box.pack_start(self.button_svg_lock, expand, fill, 0)
+		if show_lock:
+			self.box.pack_start(self.button_svg_lock, expand, fill, 0)
 		if show_logout:
 			self.box.pack_start(self.button_svg_logout, expand, fill, 0)
-		self.box.pack_start(self.button_svg_reboot, expand, fill, 0)
-		self.box.pack_start(self.button_svg_halt, expand, fill, 0)
+		if show_reboot:
+			self.box.pack_start(self.button_svg_reboot, expand, fill, 0)
+		if show_shutdown:
+			self.box.pack_start(self.button_svg_halt, expand, fill, 0)
 
 
 		# add HBox to alignment and to main window
