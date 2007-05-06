@@ -213,54 +213,54 @@ class Closure:
 					# the height is smaller then the width
 					self.background_svg_scale = self.height / float(self.background_svg.props.height)
 			except:
-				print "SVG file:", svg
+				print "SVG file not found:", svg
 
 		svg = self.client.get_string( common.BUTTONS_BG_SVG )
 		if svg:
 			try:
 				self.button_background = rsvg.Handle( svg )
 			except:
-				print "SVG file:", svg
+				print "SVG file not found:", svg
 		
 		svg = self.client.get_string( common.BUTTONS_LOCK_SVG )
 		if svg:
 			try:
 				self.lock_svg = rsvg.Handle( svg )
 			except:
-				print "SVG file:", svg
+				print "SVG file not found:", svg
 
 		svg = self.client.get_string( common.BUTTONS_LOGOUT_SVG )
 		if svg:
 			try:
 				self.logout_svg = rsvg.Handle( svg )
 			except:
-				print "SVG file:", svg
+				print "SVG file not found:", svg
 
 		svg = self.client.get_string( common.BUTTONS_REBOOT_SVG )
 		if svg:
 			try:
 				self.reboot_svg = rsvg.Handle( svg )
 			except:
-				print "SVG file:", svg
+				print "SVG file not found:", svg
 
 		svg = self.client.get_string( common.BUTTONS_SHUTDOWN_SVG )
 		if svg:
 			try:
 				self.shutdown_svg = rsvg.Handle( svg )
 			except:
-				print "SVG file:", svg
+				print "SVG file not found:", svg
 		
 		svg = self.client.get_string( common.BUTTONS_CANCEL_SVG )
 		if svg:
 			try:
 				self.cancel_svg = rsvg.Handle( svg )
 			except:
-				print "SVG file:", svg
+				print "SVG file not found:", svg
 			svg = svg.replace(".svg", "-focus.svg")
 			try:
 				self.cancel_focus_svg = rsvg.Handle( svg )
 			except:
-				print "SVG file:", svg
+				print "SVG file not found:", svg
 	
 
 	def expose( self, widget, event):
