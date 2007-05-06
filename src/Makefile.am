@@ -32,7 +32,7 @@ common.py: common.in.py
 install-exec-local:
 	sed -e "s|\@PKGDATADIR\@|$(pkgdatadir)|g" common.in.py > common.py
 	sed -e "s|\@PREFIX\@|$(prefix)|g" closure.pc.in > closure.pc
-	$(INSTALL_DATA) closure.pc $(libdir)/pkgconfig/closure.pc
+	$(INSTALL_DATA) closure.pc $(DESDIR)$(libdir)/pkgconfig/closure.pc
 
 EXTRA_DIST = $(glade_DATA) common.in.py closure.pc.in $(schema_DATA_IN)
 
