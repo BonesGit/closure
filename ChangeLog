@@ -1,7 +1,10 @@
+2007-05-06 Anthony Arobone <aarobone@gmail.com>
+	* Incremented version to 0.1.1
+	* Added better error reporting for SVG images
+	* Fixed src/Makefile.am to use DESTDIR for closure.pc
+
 2007-04-29	Anthony Arobone	<aarobone@gmail.com>
 	* 0.1 source archive released
 
 2007-04-23	Anthony Arobone	<aarobone@gmail.com>
 	* Initial Closure import
-
-

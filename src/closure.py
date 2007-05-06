@@ -136,30 +136,49 @@ class Closure:
 	
 		# create SVG Buttons
 		if show_lock:
-			self.button_svg_lock = SVGButton.SVGButton( button_scale, lock_label, lock_cmd )
-			self.button_svg_lock.set_foreground_svg( self.lock_svg )
-			self.button_svg_lock.set_background_svg( self.button_background )
-			self.button_svg_lock.set_flags( gtk.CAN_DEFAULT )
+			if self.lock_svg:
+				self.button_svg_lock = SVGButton.SVGButton( button_scale, lock_label, lock_cmd )
+				self.button_svg_lock.set_foreground_svg( self.lock_svg )
+				self.button_svg_lock.set_background_svg( self.button_background )
+				self.button_svg_lock.set_flags( gtk.CAN_DEFAULT )
+			else:
+				print "Disabled Lock button"
 
 		if show_logout:
-			self.button_svg_logout = SVGButton.SVGButton( button_scale, logout_label, logout_cmd )
-			self.button_svg_logout.set_foreground_svg( self.logout_svg )
-			self.button_svg_logout.set_background_svg( self.button_background )
+			if self.logout_svg:
+				self.button_svg_logout = SVGButton.SVGButton( button_scale, logout_label, logout_cmd )
+				self.button_svg_logout.set_foreground_svg( self.logout_svg )
+				self.button_svg_logout.set_background_svg( self.button_background )
+			else:
+				print "Disabled Logout button"
+
 
 		if show_reboot:
-			self.button_svg_reboot = SVGButton.SVGButton( button_scale, reboot_label, reboot_cmd )
-			self.button_svg_reboot.set_foreground_svg( self.reboot_svg )
-			self.button_svg_reboot.set_background_svg( self.button_background )
+			if self.reboot_svg:
+				self.button_svg_reboot = SVGButton.SVGButton( button_scale, reboot_label, reboot_cmd )
+				self.button_svg_reboot.set_foreground_svg( self.reboot_svg )
+				self.button_svg_reboot.set_background_svg( self.button_background )
+			else:
+				print "Disabled Reboot button"
+
 
 		if show_shutdown:
-			self.button_svg_halt = SVGButton.SVGButton( button_scale, shutdown_label, shutdown_cmd )
-			self.button_svg_halt.set_foreground_svg( self.shutdown_svg )
-			self.button_svg_halt.set_background_svg( self.button_background )
+			if self.shutdown_svg:
+				self.button_svg_halt = SVGButton.SVGButton( button_scale, shutdown_label, shutdown_cmd )
+				self.button_svg_halt.set_foreground_svg( self.shutdown_svg )
+				self.button_svg_halt.set_background_svg( self.button_background )
+			else:
+				print "Disabled Shutdown button"
+
 
 		if show_cancel:
-			self.button_cancel = SVGButton.SVGButton( 1, cancel_label, " " )
-			self.button_cancel.set_foreground_svg( self.cancel_svg )
-			self.button_cancel.set_focus_svg( self.cancel_focus_svg )
+			if self.cancel_svg:
+				self.button_cancel = SVGButton.SVGButton( 1, cancel_label, " " )
+				self.button_cancel.set_foreground_svg( self.cancel_svg )
+				self.button_cancel.set_focus_svg( self.cancel_focus_svg )
+			else:
+				print "Disabled Cancel button"
+
 
 
 		# add buttons to HBox
@@ -168,13 +187,13 @@ class Closure:
 		self.box.set_spacing( 0 )
 		expand = False
 		fill = False
-		if show_lock:
+		if show_lock and self.button_svg_lock:
 			self.box.pack_start(self.button_svg_lock, expand, fill, 0)
-		if show_logout:
+		if show_logout and self.button_svg_logout:
 			self.box.pack_start(self.button_svg_logout, expand, fill, 0)
-		if show_reboot:
+		if show_reboot and self.button_svg_reboot:
 			self.box.pack_start(self.button_svg_reboot, expand, fill, 0)
-		if show_shutdown:
+		if show_shutdown and self.button_svg_halt:
 			self.box.pack_start(self.button_svg_halt, expand, fill, 0)
 
 
@@ -184,7 +203,7 @@ class Closure:
 		
 		con = gtk.Table( 2 )
 		con.attach( self.align, 1, 2, 1, 2, gtk.EXPAND | gtk.FILL, gtk.EXPAND )
-		if show_cancel:
+		if show_cancel and self.button_cancel:
 			con.attach( self.button_cancel, 1, 2, 2, 3, gtk.SHRINK, gtk.SHRINK )
 		self.window.add( con )
 

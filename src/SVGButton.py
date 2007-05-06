@@ -298,6 +298,10 @@ class SVGButton(gtk.EventBox):
 
 
 	def set_background_svg( self, svg ):
+		if svg == None:
+			print "Error: Background svg image can not be null."
+			return
+
 		self.svg_background = svg
 		
 		# on set background, resize the widget
