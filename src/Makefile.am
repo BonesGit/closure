@@ -13,6 +13,7 @@ $(schema_DATA): $(schema_DATA_IN)
 
 install-data-local:
 	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schema_DATA)
+	killall -HUP gconfd-2
 
 
 pkgpyexecdirdir = $(pkgpythondir)
