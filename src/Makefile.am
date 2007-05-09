@@ -33,7 +33,15 @@ common.py: common.in.py
 install-exec-local:
 	sed -e "s|\@PKGDATADIR\@|$(pkgdatadir)|g" common.in.py > common.py
 	sed -e "s|\@PREFIX\@|$(prefix)|g" closure.pc.in > closure.pc
+	mkdir -p $(DESTDIR)$(libdir)/pkgconfig
 	$(INSTALL_DATA) closure.pc $(DESTDIR)$(libdir)/pkgconfig/closure.pc
+
+
+uninstall-local:
+	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-uninstall-rule $(srcdir)/$(schema_DATA)
+	killall -HUP gconfd-2
+	rm -f $(DESTDIR)$(libdir)/pkgconfig/closure.pc
+
 
 EXTRA_DIST = $(glade_DATA) common.in.py closure.pc.in $(schema_DATA_IN)
 

@@ -5,6 +5,11 @@ install-exec-local:
 	$(INSTALL) -m 755 closure $(DESTDIR)$(bindir)/closure
 	$(INSTALL) -m 755 closure-preferences $(DESTDIR)$(bindir)/closure-preferences
 
+uninstall-local:
+	rm -f $(DESTDIR)$(bindir)/closure
+	rm -f $(DESTDIR)$(bindir)/closure-preferences
+
+
 EXTRA_DIST = closure.in closure-preferences.in
 
 clean:
