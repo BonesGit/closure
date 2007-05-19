@@ -1,5 +1,7 @@
 2007-05-19 Anthony Arobone <aarobone@gmail.com>
 	* Added compact option
+	* Bug fix attempt for Compiz where the entire screen was not being used in
+	normal and fullscreen mode.
 
 2007-05-06 Anthony Arobone <aarobone@gmail.com>
 	* Incremented version to 0.1.1
