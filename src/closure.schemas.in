@@ -12,6 +12,17 @@
 		 </locale>
 	</schema>
 	<schema>
+		<key>/schemas/apps/closure/general/compact</key>
+		<applyto>/apps/closure/general/compact</applyto>
+		<owner>closure</owner>
+		<type>bool</type>
+		<default>0</default>
+		<locale name="C">
+			<short>Compact</short>
+			<long>Toggles compact mode.</long>
+		 </locale>
+	</schema>
+	<schema>
 		<key>/schemas/apps/closure/background/style</key>
 		<applyto>/apps/closure/background/style</applyto>
 		<owner>closure</owner>

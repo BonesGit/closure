@@ -43,6 +43,7 @@ class Closure:
 	# fullscreen mode
 	#	NOTE: fullscreen mode causes slowness with mouse presses, not sure why.
 	do_fullscreen = False
+	compact = False
 	background_style = None
 	background_solid = None
 	background_linear_1 = None
@@ -70,18 +71,22 @@ class Closure:
 		self.width = self.window.get_screen().get_width()
 		self.height = self.window.get_screen().get_height()
 		self.window.set_position( gtk.WIN_POS_CENTER )
-		self.window.set_default_size( self.width, self.height ) 
-		self.window.set_geometry_hints( None, self.width, self.height )
 
+		# load gconf client
 		self.client = gconf.client_get_default()
 		self.client.add_dir( common.GENERAL_PATH, gconf.CLIENT_PRELOAD_NONE )
 		self.client.add_dir( common.BACKGROUND_PATH, gconf.CLIENT_PRELOAD_NONE )
 		self.client.add_dir( common.BUTTONS_PATH, gconf.CLIENT_PRELOAD_NONE )
 		self.client.add_dir( common.COMMANDS_PATH, gconf.CLIENT_PRELOAD_NONE )
 
+		# set compact mode
+		self.compact = common.loadBool( self.client, common.GENERAL_COMPACT, False )
+		if not self.compact:
+			self.window.set_default_size( self.width, self.height ) 
+			self.window.set_geometry_hints( None, self.width, self.height, self.width, self.height )
 	
 		# set fullscreen mode
-		self.do_fullscreen = self.client.get_bool( common.GENERAL_FULLSCREEN )
+		self.do_fullscreen = common.loadBool( self.client, common.GENERAL_FULLSCREEN, False )
 		if self.do_fullscreen:
 			self.window.fullscreen()
 

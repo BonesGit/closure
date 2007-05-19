@@ -81,6 +81,7 @@ class preferences:
 		
 		# General Tab
 		self.setup_bool( common.GENERAL_FULLSCREEN, self.wTree.get_widget("fullscreen-checkbutton") )
+		self.setup_bool( common.GENERAL_COMPACT, self.wTree.get_widget("compact-checkbutton") )
 		
 		
 		# Background Tab
