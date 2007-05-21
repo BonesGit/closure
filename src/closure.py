@@ -33,8 +33,45 @@ import os
 import SVGButton
 import common
 import closure_preferences
+from threading import Thread
+import time
 
 
+class FadeIn(Thread):
+	obj = None
+	target = 0.0
+	alpha = 0.0
+	step = 0.0039 #single incerment
+	def __init__ (self, alpha, window):
+		Thread.__init__(self)
+		self.target = alpha
+		self.alpha = 0.0
+		self.step = self.target / 6.0
+		self.obj = window
+	def run(self):
+		print time.time()
+		last = time.time()
+		while 1:
+			if self.alpha >= self.target: break
+			now = time.time()
+			delta = now - last
+			if delta < 1.0: continue
+			last = now
+			
+			self.alpha += self.step * delta
+			print self.alpha
+			
+			#gtk.gdk.threads_enter()
+			self.obj.background_solid_alpha = self.alpha
+#			print "fading...", self.obj.background_solid_alpha, self.target
+			self.obj.window.window.invalidate_rect( (0,0,self.obj.width,self.obj.height), False )
+			#self.obj.window.window.process_updates( False )
+			#gtk.gdk.threads_leave()
+			
+			if self.alpha >= self.target: break
+			#time.sleep(0.00005)
+		print time.time()
+		
 class Closure:
 	"Closure"
 	
@@ -44,8 +81,11 @@ class Closure:
 	#	NOTE: fullscreen mode causes slowness with mouse presses, not sure why.
 	do_fullscreen = False
 	compact = False
+	windowType = "NORMAL"
+	fadeIn = None
 	background_style = None
 	background_solid = None
+	background_solid_alpha = None
 	background_linear_1 = None
 	background_linear_2 = None
 	background_linear_3 = None
@@ -79,6 +119,17 @@ class Closure:
 		self.client.add_dir( common.BUTTONS_PATH, gconf.CLIENT_PRELOAD_NONE )
 		self.client.add_dir( common.COMMANDS_PATH, gconf.CLIENT_PRELOAD_NONE )
 
+		# set window type
+		self.windowType = common.loadString( self.client, common.GENERAL_WINDOWTYPE, "NORMAL" )
+		if self.windowType == "SPLASHSCREEN":
+			self.window.set_type_hint( gtk.gdk.WINDOW_TYPE_HINT_SPLASHSCREEN )
+		elif self.windowType == "UTILITY":
+			self.window.set_type_hint( gtk.gdk.WINDOW_TYPE_HINT_UTILITY )
+		elif self.windowType == "DOCK":
+			self.window.set_type_hint( gtk.gdk.WINDOW_TYPE_HINT_DOCK )
+		else:
+			self.window.set_type_hint( gtk.gdk.WINDOW_TYPE_HINT_NORMAL )
+			
 		# set compact mode
 		self.compact = common.loadBool( self.client, common.GENERAL_COMPACT, False )
 		if not self.compact:
@@ -103,13 +154,16 @@ class Closure:
 		
 		self.window.set_resizable( False )
 		self.window.set_keep_above( True )
-		#self.window.set_urgency_hint( True )
 		self.window.set_decorated( False )
 		self.window.set_gravity( gtk.gdk.GRAVITY_CENTER )
 	
 		# load background properties
 		self.background_style = common.loadString( self.client, common.BACKGROUND_STYLE, "linear" )
 		self.background_solid = common.loadColor( self.client, common.BACKGROUND_SOLID, "000000AA" )
+		self.background_solid_alpha = self.background_solid[3]
+		#self.background_solid_alpha = 0.0
+		#self.fadeIn = FadeIn( self.background_solid[3], self );
+		
 		self.background_linear_1 = common.loadColor( self.client, common.BACKGROUND_LINEAR_STEP_1, "000000E6" )
 		self.background_linear_2 = common.loadColor( self.client, common.BACKGROUND_LINEAR_STEP_2, "000000BF" )
 		self.background_linear_3 = common.loadColor( self.client, common.BACKGROUND_LINEAR_STEP_3, "00000080" )
@@ -321,7 +375,7 @@ class Closure:
 		# solid black, decent
 		if self.background_style == "solid":
 #			cr.set_source_rgba( 0.1, 0.1, 0.1, 0.5 )
-			cr.set_source_rgba( self.background_solid[0], self.background_solid[1], self.background_solid[2], self.background_solid[3] )
+			cr.set_source_rgba( self.background_solid[0], self.background_solid[1], self.background_solid[2], self.background_solid_alpha )
 			cr.paint()
 
 		# diagonal linear gradient, ok
@@ -343,7 +397,16 @@ class Closure:
 #		cr.set_source( pat )
 #		cr.paint()
 
+		# kick off fade in thread
+		if self.fadeIn:
+			self.fadeIn.start()
+			self.fadeIn = None
+
 		return False
+
+	def fadeInSolid(self):
+		print "fading in...", self
+		
 
 	def screen_changed( self, widget, old_screen=None):
 		screen = widget.get_screen()
@@ -366,6 +429,9 @@ class Closure:
 
 
 	def main(self):
+		# Initialize gtk thread engine
+		gtk.gdk.threads_init()
+		# Initialize gtk main thread
 		gtk.main()
 
 

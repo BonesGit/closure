@@ -23,6 +23,17 @@
 		 </locale>
 	</schema>
 	<schema>
+		<key>/schemas/apps/closure/general/window_type</key>
+		<applyto>/apps/closure/general/window_type</applyto>
+		<owner>closure</owner>
+		<type>string</type>
+		<default>NORMAL</default>
+		<locale name="C">
+			<short>Window Type Hint</short>
+			<long>Sets the window type hint, for better control via your WM.</long>
+		 </locale>
+	</schema>
+	<schema>
 		<key>/schemas/apps/closure/background/style</key>
 		<applyto>/apps/closure/background/style</applyto>
 		<owner>closure</owner>

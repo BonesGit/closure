@@ -1,3 +1,6 @@
+2007-05-21 Anthony Arobone <aarobone@gmail.com>
+	* Added preferences setting for window type hint
+
 2007-05-19 Anthony Arobone <aarobone@gmail.com>
 	* Added compact option
 	* Bug fix attempt for Compiz where the entire screen was not being used in

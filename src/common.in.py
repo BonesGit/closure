@@ -43,6 +43,7 @@ DATA_DIR = "@PKGDATADIR@"
 GENERAL_PATH			= "/apps/closure/general"
 GENERAL_FULLSCREEN		= "/apps/closure/general/fullscreen"		# bool
 GENERAL_COMPACT			= "/apps/closure/general/compact"			# bool
+GENERAL_WINDOWTYPE		= "/apps/closure/general/window_type"		# string
 
 BACKGROUND_PATH			= "/apps/closure/background"
 BACKGROUND_STYLE		= "/apps/closure/background/style" #bool

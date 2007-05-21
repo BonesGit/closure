@@ -82,6 +82,7 @@ class preferences:
 		# General Tab
 		self.setup_bool( common.GENERAL_FULLSCREEN, self.wTree.get_widget("fullscreen-checkbutton") )
 		self.setup_bool( common.GENERAL_COMPACT, self.wTree.get_widget("compact-checkbutton") )
+		self.setup_combobox( common.GENERAL_WINDOWTYPE, self.wTree.get_widget("windowtype-comboboxentry") )
 		
 		
 		# Background Tab
@@ -159,7 +160,32 @@ class preferences:
 	def scale_changed(self, scale, key):
 		val = scale.get_value()
 		self.client.set_float(key, val)
+
+
+	#
+	# ComboBox setup
+	#
+	def setup_combobox(self, key, chooser):
+		"""sets up dropdowns"""
+		typeKey = self.client.get_string(key)
+		model = chooser.get_model()
+		iter = model.get_iter_root()
+		index = 0
+		while iter != None:
+			type = model.get( iter, 0 )[0]
+			if typeKey == type:
+				chooser.set_active( index )
+				break
+			iter = model.iter_next( iter )
+			index += 1
+		if chooser.get_active() == -1:
+			chooser.set_active( 0 )
+		chooser.connect("changed", self.combobox_changed, key)
 		
+	def combobox_changed(self, chooser, key ):
+		hint = chooser.get_active_text()
+		self.client.set_string( key, hint )
+	
 	
 	#
 	# File chooser setup
