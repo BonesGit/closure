@@ -13,6 +13,7 @@ icon_DATA = 							\
 			system-log-out.svg			\
 			computer-reboot.svg			\
 			computer.svg				\
+			preferences-desktop-screensaver.svg \
 			emblem-unreadable.svg		\
 			emblem-unreadable-focus.svg	\
 			closure-24.png				\

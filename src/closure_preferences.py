@@ -126,6 +126,7 @@ class preferences:
 		self.setup_entry( common.COMMANDS_LOGOUT, self.wTree.get_widget("logout-cmd-entry") )
 		self.setup_entry( common.COMMANDS_REBOOT, self.wTree.get_widget("reboot-cmd-entry") )
 		self.setup_entry( common.COMMANDS_SHUTDOWN, self.wTree.get_widget("shutdown-cmd-entry") )
+		self.setup_entry( common.COMMANDS_HIBERNATE, self.wTree.get_widget("hibernate-cmd-entry") )
 		
 	
 

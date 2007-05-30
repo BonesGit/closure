@@ -96,6 +96,7 @@ class Closure:
 	logout_svg = None
 	reboot_svg = None
 	shutdown_svg = None
+	hibernate_svg = None
 	cancel_svg = None
 	cancel_focus_svg = None
 
@@ -190,6 +191,12 @@ class Closure:
 		shutdown_label = common.loadString(  self.client, common.BUTTONS_SHUTDOWN_LABEL, "Shutdown" )
 		shutdown_cmd = common.loadString(  self.client, common.COMMANDS_SHUTDOWN, None )
 
+		show_hibernate = common.loadBool(  self.client, common.BUTTONS_HIBERNATE_ENABLED, False )
+		hibernate_label = common.loadString(  self.client, common.BUTTONS_HIBERNATE_LABEL, "Hibernate" )
+		hibernate_cmd = common.loadString(  self.client, common.COMMANDS_HIBERNATE, None )
+		if show_hibernate and not hibernate_cmd:
+			show_hibernate = False
+
 		show_cancel = common.loadBool(  self.client, common.BUTTONS_CANCEL_ENABLED, True )
 		cancel_label = common.loadString(  self.client, common.BUTTONS_CANCEL_LABEL, None )
 	
@@ -229,6 +236,14 @@ class Closure:
 			else:
 				print "Disabled Shutdown button"
 
+		if show_hibernate:
+			if self.hibernate_svg:
+				self.button_svg_hib = SVGButton.SVGButton( button_scale, hibernate_label, hibernate_cmd )
+				self.button_svg_hib.set_foreground_svg( self.hibernate_svg )
+				self.button_svg_hib.set_background_svg( self.button_background )
+			else:
+				print "Disabled Hibernate button"
+
 
 		if show_cancel:
 			if self.cancel_svg:
@@ -248,6 +263,8 @@ class Closure:
 		fill = False
 		if show_lock and self.button_svg_lock:
 			self.box.pack_start(self.button_svg_lock, expand, fill, 0)
+		if show_hibernate and self.button_svg_hib:
+			self.box.pack_start(self.button_svg_hib, expand, fill, 0)
 		if show_logout and self.button_svg_logout:
 			self.box.pack_start(self.button_svg_logout, expand, fill, 0)
 		if show_reboot and self.button_svg_reboot:
@@ -325,6 +342,13 @@ class Closure:
 		if svg:
 			try:
 				self.shutdown_svg = rsvg.Handle( svg )
+			except:
+				print "SVG file not found:", svg
+		
+		svg = self.client.get_string( common.BUTTONS_HIBERNATE_SVG )
+		if svg:
+			try:
+				self.hibernate_svg = rsvg.Handle( svg )
 			except:
 				print "SVG file not found:", svg
 		

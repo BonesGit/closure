@@ -276,6 +276,39 @@
 		 </locale>
 	</schema>
 	<schema>
+		<key>/schemas/apps/closure/buttons/hibernate_enabled</key>
+		<applyto>/apps/closure/buttons/hibernate_enabled</applyto>
+		<owner>closure</owner>
+		<type>bool</type>
+		<default>0</default>
+		<locale name="C">
+			<short>Enable/Disable the button</short>
+			<long>Enable/Disable the use of this button</long>
+		 </locale>
+	</schema>
+	<schema>
+		<key>/schemas/apps/closure/buttons/hibernate_label</key>
+		<applyto>/apps/closure/buttons/hibernate_label</applyto>
+		<owner>closure</owner>
+		<type>string</type>
+		<default>Hibernate</default>
+		<locale name="C">
+			<short>Text label</short>
+			<long>The onscreen text to associated with this button.</long>
+		 </locale>
+	</schema>
+	<schema>
+		<key>/schemas/apps/closure/buttons/hibernate_svg</key>
+		<applyto>/apps/closure/buttons/hibernate_svg</applyto>
+		<owner>closure</owner>
+		<type>string</type>
+		<default>@PREFIX@/share/closure/preferences-desktop-screensaver.svg</default>
+		<locale name="C">
+			<short>SVG Image</short>
+			<long>The full path to the SVG image to use as the button foreground.</long>
+		 </locale>
+	</schema>
+	<schema>
 		<key>/schemas/apps/closure/buttons/scale</key>
 		<applyto>/apps/closure/buttons/scale</applyto>
 		<owner>closure</owner>
@@ -328,6 +361,17 @@
 		<locale name="C">
 			<short>Command to shutdown the computer</short>
 			<long>The command to shutdown the computer.</long>
+		 </locale>
+	</schema>
+	<schema>
+		<key>/schemas/apps/closure/commands/hibernate</key>
+		<applyto>/apps/closure/commands/hibernate</applyto>
+		<owner>closure</owner>
+		<type>string</type>
+		<default></default>
+		<locale name="C">
+			<short>Command to put the computer into hibernate</short>
+			<long>The command to put the computer into hibernate.</long>
 		 </locale>
 	</schema>
 </schemalist>

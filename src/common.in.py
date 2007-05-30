@@ -70,6 +70,9 @@ BUTTONS_REBOOT_SVG		= "/apps/closure/buttons/reboot_svg" 		#color
 BUTTONS_SHUTDOWN_ENABLED	= "/apps/closure/buttons/shutdown_enabled"	#bool
 BUTTONS_SHUTDOWN_LABEL		= "/apps/closure/buttons/shutdown_label"	#string
 BUTTONS_SHUTDOWN_SVG		= "/apps/closure/buttons/shutdown_svg" 		#color
+BUTTONS_HIBERNATE_ENABLED	= "/apps/closure/buttons/hibernate_enabled"	#bool
+BUTTONS_HIBERNATE_LABEL		= "/apps/closure/buttons/hibernate_label"	#string
+BUTTONS_HIBERNATE_SVG		= "/apps/closure/buttons/hibernate_svg" 	#color
 BUTTONS_SCALE				= "/apps/closure/buttons/scale"				#float
 
 COMMANDS_PATH		= "/apps/closure/commands"
@@ -77,6 +80,7 @@ COMMANDS_LOCK		= "/apps/closure/commands/lock"		#string
 COMMANDS_LOGOUT		= "/apps/closure/commands/logout"	#string
 COMMANDS_REBOOT		= "/apps/closure/commands/reboot"	#string
 COMMANDS_SHUTDOWN	= "/apps/closure/commands/shutdown"	#string
+COMMANDS_HIBERNATE	= "/apps/closure/commands/hibernate"	#string
 
 
 COLOR_BIT_MAX = 65535
