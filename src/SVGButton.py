@@ -39,6 +39,7 @@ import pangocairo
 class SVGButton(gtk.EventBox):
 	"SVGButton Widget"
 
+	name = ""
 	width = 48
 	height = 48
 	text_width = 0
@@ -48,6 +49,7 @@ class SVGButton(gtk.EventBox):
 	def __init__( self, scale=1, text=None, bin=None ):
 		gtk.EventBox.__init__(self)
 
+		self.name = text
 
 		# instance variables
 		self.text_layout = None
@@ -94,6 +96,9 @@ class SVGButton(gtk.EventBox):
 		self.connect( "enter-notify-event", self.do_enter )
 		self.connect( "leave-notify-event", self.do_leave )
 		
+		
+	def getName(self):
+		return self.name
 
 
 	def screen_changed( self, widget, old_screen=None ):
@@ -152,8 +157,9 @@ class SVGButton(gtk.EventBox):
 		cr.set_operator( cairo.OPERATOR_OVER )
 		
 		# calculate the base translation for this widget within it's parent drawing area
+		# i.e. 0,0 is top left of this widget
 		if rect.height > rect.width:
-			# if the physical height is bigger then the width (not square)
+			# if the physical height is bigger then the width (i.e. not square)
 			# then offset all the drawing in the middle vertically
 			diff = rect.width - rect.height
 			diff = diff / 2
@@ -181,6 +187,16 @@ class SVGButton(gtk.EventBox):
 			cr.scale( self.scale, self.scale )
 			self.svg_foreground.render_cairo( cr )
 			cr.set_matrix( base_mat )
+
+			# ground reflection
+#			cr.scale( 1, -1 )
+##			skewMat = cairo.Matrix( 1, 0, -0.2, 0.5, 0, 0 )
+##			cr.transform( skewMat )
+#			cr.transform( cairo.Matrix( 1, 0, -0.2, 0.5, 0, 0 ) )
+#			cr.translate(-iw*0.2, -ih - (ih/2) )
+#			self.svg_foreground.render_cairo( cr )
+#			cr.set_matrix( base_mat )
+			
 
 		# render focus layer
 		if self.inside and self.svg_focus:
@@ -264,6 +280,7 @@ class SVGButton(gtk.EventBox):
 
 
 	def release(self, widget, event ):
+#		print "SVGButton release ", event.button
 		retval = True
 		if event.button == 1:
 			if self.inside:
@@ -339,3 +356,25 @@ class SVGButton(gtk.EventBox):
 	#
 	def get_size( self ):
 		return ( self.width, self.height )
+
+
+	#
+	# Checks if the button has focus
+	#
+	def is_focused( self ):
+		return self.inside
+	
+	def set_focused( self, focus ):
+		if self.inside != focus:
+			self.inside = focus
+			rect = self.get_allocation()
+			self.window.invalidate_rect( rect, False )
+			self.window.process_updates( False )		
+		
+		
+	def activate(self):
+		event = gtk.gdk.Event(gtk.gdk.BUTTON_RELEASE)
+		event.button = 1
+		self.event( event )
+		return True
+		

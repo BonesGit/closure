@@ -1,3 +1,6 @@
+2007-06-24 Anthony Arobone <aarobone@gmail.com>
+	* Added initial keyboard support: left arrow, right arrow, and enter
+
 2007-05-29 Anthony Arobone <aarobone@gmail.com>
 	* Added a hibernate button
 

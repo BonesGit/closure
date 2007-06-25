@@ -26,6 +26,7 @@ import gobject
 import pygtk
 pygtk.require('2.0')
 import gtk
+import gtk.gdk
 import cairo
 import rsvg
 import gconf
@@ -99,6 +100,10 @@ class Closure:
 	hibernate_svg = None
 	cancel_svg = None
 	cancel_focus_svg = None
+	# array of buttons
+	buttons = []
+	# button with keyboard focus
+	focused = None
 
 
 	def __init__(self):
@@ -203,44 +208,49 @@ class Closure:
 		# create SVG Buttons
 		if show_lock:
 			if self.lock_svg:
-				self.button_svg_lock = SVGButton.SVGButton( button_scale, lock_label, lock_cmd )
-				self.button_svg_lock.set_foreground_svg( self.lock_svg )
-				self.button_svg_lock.set_background_svg( self.button_background )
-				self.button_svg_lock.set_flags( gtk.CAN_DEFAULT )
+				button = SVGButton.SVGButton( button_scale, lock_label, lock_cmd )
+				button.set_foreground_svg( self.lock_svg )
+				button.set_background_svg( self.button_background )
+				button.set_flags( gtk.CAN_DEFAULT )
+				self.buttons.append( button )
 			else:
 				print "Disabled Lock button"
 
 		if show_logout:
 			if self.logout_svg:
-				self.button_svg_logout = SVGButton.SVGButton( button_scale, logout_label, logout_cmd )
-				self.button_svg_logout.set_foreground_svg( self.logout_svg )
-				self.button_svg_logout.set_background_svg( self.button_background )
+				button = SVGButton.SVGButton( button_scale, logout_label, logout_cmd )
+				button.set_foreground_svg( self.logout_svg )
+				button.set_background_svg( self.button_background )
+				self.buttons.append( button )
 			else:
 				print "Disabled Logout button"
 
 
 		if show_reboot:
 			if self.reboot_svg:
-				self.button_svg_reboot = SVGButton.SVGButton( button_scale, reboot_label, reboot_cmd )
-				self.button_svg_reboot.set_foreground_svg( self.reboot_svg )
-				self.button_svg_reboot.set_background_svg( self.button_background )
+				button = SVGButton.SVGButton( button_scale, reboot_label, reboot_cmd )
+				button.set_foreground_svg( self.reboot_svg )
+				button.set_background_svg( self.button_background )
+				self.buttons.append( button )
 			else:
 				print "Disabled Reboot button"
 
 
 		if show_shutdown:
 			if self.shutdown_svg:
-				self.button_svg_halt = SVGButton.SVGButton( button_scale, shutdown_label, shutdown_cmd )
-				self.button_svg_halt.set_foreground_svg( self.shutdown_svg )
-				self.button_svg_halt.set_background_svg( self.button_background )
+				button = SVGButton.SVGButton( button_scale, shutdown_label, shutdown_cmd )
+				button.set_foreground_svg( self.shutdown_svg )
+				button.set_background_svg( self.button_background )
+				self.buttons.append( button )
 			else:
 				print "Disabled Shutdown button"
 
 		if show_hibernate:
 			if self.hibernate_svg:
-				self.button_svg_hib = SVGButton.SVGButton( button_scale, hibernate_label, hibernate_cmd )
-				self.button_svg_hib.set_foreground_svg( self.hibernate_svg )
-				self.button_svg_hib.set_background_svg( self.button_background )
+				button = SVGButton.SVGButton( button_scale, hibernate_label, hibernate_cmd )
+				button.set_foreground_svg( self.hibernate_svg )
+				button.set_background_svg( self.button_background )
+				self.buttons.append( button )
 			else:
 				print "Disabled Hibernate button"
 
@@ -254,24 +264,15 @@ class Closure:
 				print "Disabled Cancel button"
 
 
-
 		# add buttons to HBox
 		self.box = gtk.HButtonBox()
 		self.box.set_layout( gtk.BUTTONBOX_SPREAD )
 		self.box.set_spacing( 0 )
 		expand = False
 		fill = False
-		if show_lock and self.button_svg_lock:
-			self.box.pack_start(self.button_svg_lock, expand, fill, 0)
-		if show_hibernate and self.button_svg_hib:
-			self.box.pack_start(self.button_svg_hib, expand, fill, 0)
-		if show_logout and self.button_svg_logout:
-			self.box.pack_start(self.button_svg_logout, expand, fill, 0)
-		if show_reboot and self.button_svg_reboot:
-			self.box.pack_start(self.button_svg_reboot, expand, fill, 0)
-		if show_shutdown and self.button_svg_halt:
-			self.box.pack_start(self.button_svg_halt, expand, fill, 0)
-
+		# add buttons to viewport
+		for b in self.buttons:
+			self.box.pack_start( b, expand, fill, 0)
 
 		# add HBox to alignment and to main window
 		self.align = gtk.Alignment( 0.5, 0.5, 0.3, 0 )
@@ -440,12 +441,58 @@ class Closure:
 
 
 	def keypressed(self, widget, event, data=None):
-		if event.keyval == 96: #tilda
+#		print event.keyval
+		if event.keyval == 96: # tilda
 			self.window.destroy()
 			app = closure_preferences.preferences()
 			gtk.main()
-		if event.keyval == 65307: #ESC
+			
+		elif event.keyval == 65307: # ESC
 			gtk.main_quit()
+			
+		elif event.keyval == 65361: # left arrow
+			focused = False
+			for i in range(len(self.buttons)):
+				b = self.buttons[i]
+				if b.is_focused():
+					focused = True
+					b.set_focused( False )
+					if ( i == 0 ):
+						self.buttons[ len(self.buttons)-1 ].set_focused( True )
+					else:
+						self.buttons[i-1].set_focused( True )
+					break
+			if not focused and len(self.buttons) > 0:
+				self.buttons[len(self.buttons)-1].set_focused( True )
+				
+		elif event.keyval == 65293: # enter
+			for i in range(len(self.buttons)):
+				b = self.buttons[i]
+				if b.is_focused():
+					b.activate()
+			
+		elif event.keyval == 65363: # right arrow
+			focused = False
+			for i in range(len(self.buttons)):
+				b = self.buttons[i]
+				if b.is_focused():
+					focused = True
+					b.set_focused( False )
+#					print b.getName()
+#					b.event( gtk.gdk.Event(gtk.gdk.LEAVE_NOTIFY) )
+					if ( i == len(self.buttons)-1 ):
+						self.buttons[0].set_focused( True )
+#						print "enter", self.buttons[0].getName()
+#						c.event( gtk.gdk.Event(gtk.gdk.ENTER_NOTIFY) )
+					else:
+						self.buttons[i+1].set_focused( True )
+#						print "enter", self.buttons[i+1].getName()
+#						self.buttons[i+1].event( gtk.gdk.Event(gtk.gdk.ENTER_NOTIFY) )
+					break
+			if not focused and len(self.buttons) > 0:
+				self.buttons[0].set_focused( True )
+#				print "enter", self.buttons[0].getName()
+#				self.buttons[0].event( gtk.gdk.Event(gtk.gdk.ENTER_NOTIFY) )
 
 
 	def destroy(self, widget, data=None):
