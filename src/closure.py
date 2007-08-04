@@ -142,10 +142,6 @@ class Closure:
 			self.window.set_default_size( self.width, self.height ) 
 			self.window.set_geometry_hints( None, self.width, self.height, self.width, self.height )
 	
-		# set fullscreen mode
-		self.do_fullscreen = common.loadBool( self.client, common.GENERAL_FULLSCREEN, False )
-		if self.do_fullscreen:
-			self.window.fullscreen()
 
 		# register callbacks
 		self.window.connect( "expose-event", self.expose )
@@ -157,11 +153,17 @@ class Closure:
 		# set alpha
 		self.window.set_app_paintable( True )
 		self.screen_changed( self.window )
-		
+
 		self.window.set_resizable( False )
 		self.window.set_keep_above( True )
 		self.window.set_decorated( False )
 		self.window.set_gravity( gtk.gdk.GRAVITY_CENTER )
+
+		# set fullscreen mode
+		self.do_fullscreen = common.loadBool( self.client, common.GENERAL_FULLSCREEN, False )
+		if self.do_fullscreen:
+			self.window.fullscreen()
+
 	
 		# load background properties
 		self.background_style = common.loadString( self.client, common.BACKGROUND_STYLE, "linear" )
